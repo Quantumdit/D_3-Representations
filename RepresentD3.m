@@ -10,32 +10,34 @@ function [M] = RepresentD3(r,s)
 
 M = eye(4);
 
-switch s
+switch r
     case 0
-        switch r
-            case 1
+        if (s = 1)
+            M(2,2) = -1;
+            M(3,3) = 1/2;
+            M(3,4) = -1/2 * sqrt(3);
+            M(4,3) = -1/2 * sqrt(3);
+            M(4,4) = -1/2;
+        end
+    case 1
+        switch s
+            case 0
                 M(3,3) = -1/2;
                 M(3,4) = -1/2 * sqrt(3);
                 M(4,3) = 1/2 * sqrt(3);
                 M(4,4) = -1/2;
-            case 2
+            case 1
+                M(2,2) = -1;
+                M(3,3) = -1;
+        end
+    case 2
+        switch s
+            case 0
                 M(3,3) = -1/2;
                 M(3,4) = 1/2 * sqrt(3);
                 M(4,3) = -1/2 * sqrt(3);
                 M(4,4) = -1/2;
-        end
-    case 1
-        switch r
-            case 0
-                M(2,2) = -1;
-                M(3,3) = 1/2;
-                M(3,4) = -1/2 * sqrt(3);
-                M(4,3) = -1/2 * sqrt(3);
-                M(4,4) = -1/2;
             case 1
-                M(2,2) = -1;
-                M(3,3) = -1;
-            case 2
                 M(2,2) = -1;
                 M(3,3) = 1/2;
                 M(3,4) = 1/2 * sqrt(3);
